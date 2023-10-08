@@ -15,8 +15,9 @@ struct Memo: Identifiable, Codable{
     var transcript: String?
     var noteType: NoteType?
     var savedToCloudflare: SaveStaus = .unsaved
+    var aiNote: String?
     
-    init(id: UUID=UUID(), title: String, length: Int, date: Date? = nil, transcript: String? = nil, noteType: NoteType? = nil, savedToCloudflare: SaveStaus = .unsaved) {
+    init(id: UUID=UUID(), title: String, length: Int, date: Date? = nil, transcript: String? = nil, noteType: NoteType? = nil, savedToCloudflare: SaveStaus = .unsaved, aiNote: String? = nil) {
         self.id = id
         self.title = title
         self.length = length
@@ -24,6 +25,7 @@ struct Memo: Identifiable, Codable{
         self.transcript = transcript
         self.noteType = noteType
         self.savedToCloudflare = savedToCloudflare
+        self.aiNote = aiNote
     }
 }
 

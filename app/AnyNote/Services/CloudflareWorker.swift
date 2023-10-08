@@ -43,4 +43,5 @@ class CloudflareWorkerService {
         }
         task.resume()
     }
+    
 }
