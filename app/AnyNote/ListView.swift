@@ -20,11 +20,11 @@ struct ListView: View {
         ZStack (alignment: .bottom) {
             NavigationStack {
                 List($memos) { $memo in
-                    NavigationLink(destination: DetailView(memo: $memo)) {
+                    NavigationLink(destination: NoteView(memo: $memo)) {
                         CardView(memo: memo)
                     }
                 }
-                .navigationTitle("Memos")
+                .navigationTitle("Notes")
                 NewRecordingButtons(isRecording: $isRecording)
             }
 

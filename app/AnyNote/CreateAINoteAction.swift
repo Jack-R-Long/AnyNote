@@ -8,7 +8,7 @@
 import MarkdownUI
 import SwiftUI
 
-struct CreateAINoteView: View {
+struct CreateAINoteAction: View {
     @Binding var memo: Memo
     @State private var isFetching: Bool = false
     @State private var fetchError: Error? = nil
@@ -20,7 +20,9 @@ struct CreateAINoteView: View {
         case .saving:
             Text("Saving")
         case .saved:
-            Text("Saved")
+            Button("Create Note") {
+                createNote(memoId: memo.id)
+            }
                 .alert(isPresented: Binding<Bool>(
                     get: { fetchError != nil },
                     set: { _ in fetchError = nil }
@@ -48,6 +50,6 @@ struct CreateAINoteView: View {
 
 struct CreateAINoteView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateAINoteView(memo: .constant(Memo.sampleData[0]))
+        CreateAINoteAction(memo: .constant(Memo.sampleData[0]))
     }
 }
