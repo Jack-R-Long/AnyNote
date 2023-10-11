@@ -42,7 +42,7 @@ struct RecordingView: View {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let currentDateString = formatter.string(from: currentDate)
 
-        let newMemo = Memo(title: currentDateString, length: 6, transcript: speechRecognizer.transcript)
+        let newMemo = Memo(title: currentDateString, transcript: speechRecognizer.transcript)
         memos.append(newMemo)
 
         // Call the CloudflareWorkerService to post the new memo

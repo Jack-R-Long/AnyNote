@@ -35,7 +35,6 @@ struct NewRecordingButtons: View {
         }
         .frame(maxWidth: .infinity)
         .padding()
-        .background(Color.white.opacity(0.8))
     }
 }
 
