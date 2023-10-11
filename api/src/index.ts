@@ -13,7 +13,13 @@ type MemoData = {
 	savedToCloudflare?: string;
 	title?: string;
 	date?: number;
+	modelType?: AIModelType;
 };
+
+enum AIModelType {
+	gpt3 = "gpt-3.5-turbo",
+    gpt4 = "gpt-4"
+}
 
 async function handleRequest(request: Request, env: Env): Promise<Response> {
 	const url = new URL(request.url);
@@ -34,8 +40,12 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
 
 		const memoId = rawData.id;
 
+		// Assign model from POST JSON (default to gpt-4)
+		const model = rawData.modelType ?? AIModelType.gpt4
+
 		// Save memo in KV
 		if (url.pathname === '/') {
+			// TODO - should this be a PUT route? 
 			if (request.method === 'POST') {
 				await env.MEMOS_KV.put(memoId, JSON.stringify(rawData));
 				return new Response('Memo saved', { status: 200 });
@@ -83,7 +93,7 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
 								content: userMessageContent,
 							},
 						],
-						model: 'gpt-3.5-turbo',
+						model: model,
 					});
 				} catch (err: any) {
 					// To allow accessing err.message

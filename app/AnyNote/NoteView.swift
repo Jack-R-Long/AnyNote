@@ -17,12 +17,13 @@ struct NoteView: View {
                 CreateAINoteAction(memo: $memo)
             } else {
                 Markdown(memo.aiNote ?? "no note")
+                Spacer() // align to top
             }
         }
         .padding()
         .toolbar {
             NavigationLink(destination: DataView(memo: memo)) {
-                Text("Data")
+                Text("Settings")
             }
         }
     }

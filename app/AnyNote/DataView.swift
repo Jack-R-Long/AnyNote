@@ -12,14 +12,26 @@ struct DataView: View {
     var body: some View {
         VStack {
             List {
-                Section(header: Text("Transcript")) {
+                Section(header: Text("AI Stuff")) {
+                    HStack {
+                        Label("Model", systemImage: "apple.terminal")
+                        Spacer()
+                        Text("GPT-4")
+                    }
+                }
+                Section(header: Text("Recording")) {
+                    HStack {
+                        Label("Date", systemImage: "calendar")
+                        Spacer()
+                        Text(memo.date, style: .date)                    }
                     TranscriptView(transcript: memo.transcript)
                 }
-                Section(header: Text("Note")) {
-                    Text(memo.aiNote ?? "No note")
-                }
+//                Section(header: Text("Note")) {
+//                    Text(memo.aiNote ?? "No note")
+//                }
             }
         }
+        .navigationTitle(memo.title)
     }
 }
 
