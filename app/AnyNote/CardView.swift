@@ -14,9 +14,16 @@ struct CardView: View {
             Text(memo.title)
                 .font(.headline)
                 .accessibilityAddTraits(.isHeader)
+            
+            
             Spacer()
-            Label("\(memo.noteType?.rawValue ?? "N/A")", systemImage: "note")
-            .font(.caption)
+            if(memo.noteType == nil) {
+                Label("create note", systemImage: "hand.tap")
+                    .font(.caption)
+            } else {
+                Label("\(memo.noteType?.rawValue ?? "error")", systemImage: "note")
+                .font(.caption)
+            }
         }
         .padding()
     }

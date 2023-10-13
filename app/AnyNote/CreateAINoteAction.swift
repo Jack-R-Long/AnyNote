@@ -40,6 +40,7 @@ struct CreateAINoteAction: View {
             switch result {
             case .success(let note):
                 memo.aiNote = note
+                memo.noteType = .md
             case .failure(let error):
                 fetchError = error
             }
