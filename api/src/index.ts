@@ -10,7 +10,7 @@ type MemoData = {
 	id: string;
 	transcript?: string;
 	length?: number;
-	savedToCloudflare?: string;
+	workerSaveStatus?: string;
 	title?: string;
 	date?: number;
 	modelType?: AIModelType;

@@ -54,7 +54,7 @@ struct RecordingView: View {
                 // Find the index of the memo you've just added
                 if let index = self.memos.firstIndex(where: { $0.id == newMemo.id }) {
                     // Modify the memo's savedToCloudflare status
-                    self.memos[index].savedToCloudflare = .saved
+                    self.memos[index].workerSaveStatus = .saved
                     
                     // [Optional] Save the updated memos
                     // try? self?.save(memos: self?.memos ?? [])

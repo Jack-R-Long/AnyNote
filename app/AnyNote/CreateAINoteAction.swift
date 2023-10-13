@@ -14,7 +14,7 @@ struct CreateAINoteAction: View {
     @State private var fetchError: Error? = nil
 
     var body: some View {
-        switch memo.savedToCloudflare {
+        switch memo.workerSaveStatus {
         case .unsaved:
             Text("Not saved in cloud")
         case .saving:
